@@ -1,0 +1,193 @@
+\documentclass[spanish]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+ % this default might be overridden by plain title style
+ \newcommand\makebeamertitle{\frame{\maketitle}}%
+ % (ERT) argument for the TOC
+ \AtBeginDocument{%
+   \let\origtableofcontents=\tableofcontents
+   \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+   \def\gobbletableofcontents#1{\origtableofcontents}
+ }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usetheme{Warsaw}
+\date{}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title[Métodos numéricos II]{Método de Romberg}
+
+
+\author[MAC]{
+Diego Hernández Landeros\\
+Murillo Aceves Ana Karen\\
+Fernanda Ibarra\\
+Daniel Escalante\\
+\begin{figure}[h]
+\centering
+\includegraphics[width=2cm]{mac.png}
+\end{figure}
+}
+
+
+\institute[MAC]{
+UNAM-FES Acatlán, Matemáticas Aplicadas y Computación
+}
+
+\makebeamertitle
+
+\begin{frame}[plain]{Contenido}
+
+
+\tableofcontents{}
+\end{frame}
+
+
+
+\section{Introducción}
+\begin{frame}{¿Qué es?}
+
+
+La integración de Romberg es una \alert{técnica} de diseño para obtener integrales numéricas \alert{(aproximaciones)} de funciones de manera eficiente, que se basa en aplicaciones sucesivas de \alert{la regla del trapecio}. Sin embargo a través de las manipulaciones matemáticas, se alcanzan mejores resultados con menos trabajo.\\
+\\$\,$\\ %SALTO DE LINEA
+
+\end{frame}
+
+\begin{frame}{Problema}
+
+El problema en la práctica se presenta cuando nos vemos imposibilitados de encontrar la
+función primitiva requerida, aún para integrales aparentemente sencillas como\\
+{\small \[I=\int_{1}^{0}e^{x^{2}}\]}
+la cual simplemente es imposible de resolver con el Teorema Fundamental del Cálculo.
+\\$\,$\\
+El algoritmo de Romberg forma parte de una técnica conocida como método de extrapolación de
+Richardson.
+\end{frame}
+
+
+
+\section{Contenido principal}
+\begin{frame}{Contenido principal}
+
+\begin{itemize}
+\item Primero de la lista
+\item Segundo de la lista
+\item Tercero de la lista
+\end{itemize}
+\end{frame}
+
+
+
+\section{Resultados}
+\begin{frame}{Marco en la sección resultados}
+
+\begin{enumerate}
+\item Primer item en la lista numerada
+
+\begin{itemize}
+\item sub item listado
+\item segundo sub item listado
+\end{itemize}
+\item Segundo item en la lista numerada
+\item Tercer item en la lista numerada
+\end{enumerate}
+\end{frame}
+
+
+
+\section{Textos remarcados}
+\begin{frame}{Algo}
+
+
+
+
+\begin{block}{Importante} 
+Texto muestra las formulas siempre van entre \textit{aquí la formula}
+$\lim_{x \to \infty} \left( \frac{1}{x} \right)$
+\end{block}
+
+\begin{alertblock}{Algo importante} 
+Texto muestra en rojo 
+\end{alertblock}
+
+\begin{exampleblock}{Ejemplo} 
+Texto muestra en verde
+$\sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}$
+\end{exampleblock}
+
+\end{frame}
+
+
+
+\section{Dos columnas}
+
+\begin{frame} \frametitle{Two-column slide}
+\begin{columns}
+\column{0.5\textwidth} This is a text in first column. $$E=mc^2$$ \begin{itemize} \item First item \item Second item \end{itemize}
+\column{0.5\textwidth} This text will be in the second column and on a second tought this is a nice looking layout in some cases. \end{columns} \end{frame}
+
+
+
+
+\section{Texto}
+\begin{block}{}
+\begin{tabular}{|c|c|}
+\hline 
+\textbackslash{}textbf\{Texto muestra\} & \textbf{Texto muestra}\tabularnewline
+\hline 
+\textbackslash{}textit\{Texto muestra\}  & \textit{Texto muestra} \tabularnewline
+\hline 
+\textbackslash{}textsl\{Texto muestra\}  & \textsl{Sample Text}  \tabularnewline
+\hline 
+\textbackslash{}alert\{Texto muestra\}  & \alert{Texto muestra} \tabularnewline
+\hline 
+\textbackslash{}textrm\{Texto muestra\} & \textrm{Texto muestra}\tabularnewline
+\hline 
+\textbackslash{}textsf\{Texto muestra\}  & \textsf{Texto muestra} \tabularnewline
+\hline 
+\textbackslash{}color\{green\} Texto muestra & \color{green} Texto muestra\tabularnewline
+\hline 
+\textbackslash{}structure\{Texto muestra\}  & \structure{Texto muestra} \tabularnewline
+\hline 
+\textbackslash{}emph\{Texto muestra\} & \emph{Texto muestra}\tabularnewline
+\hline 
+\end{tabular}
+\end{block}
+
+
+
+\section{Referencias}
+\begin{frame}{Titulo }
+
+\begin{itemize}
+\item Algo de contenido\cite{choi2000novel}\cite{litva1996digital}
+\item Algo más de contenido\cite{litva1996digital}
+\item Otro contenido\cite{van1988beamforming}\cite{litva1996digital,van1988beamforming}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Bibliografia}
+
+
+\bibliographystyle{plain}
+\bibliography{bibli}
+
+\end{frame}
+
+\end{document}
