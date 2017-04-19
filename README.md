@@ -1,2 +1,2 @@
 # M-todo-Romberg
-Presentación métodos numéricos
+Presentación del método de Romberg, para la materia de métodos numéricos II
