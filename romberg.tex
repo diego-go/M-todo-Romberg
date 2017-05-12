@@ -17,7 +17,7 @@
 \title[Métodos Numéricos II]
 {Método de Romberg}
 
-\author[MAC]{Diego Hernández Landeros\\ \and Ana Karen Murillo \\\and Fernanda Ibarra \\\and Daniel Escalante\\
+\author[MAC]{Diego Hernández Landeros\\ \and Ana Karen Murillo Aceves\\\and Maria Fernanda Ibarra Navarro\\\and Daniel Martínez Escalante\\
 \\$\,$\\
 \centering
 \includegraphics[width=2cm]{mac.png}
@@ -61,9 +61,8 @@ La integración de Romberg es una \alert{técnica} de diseño para obtener integ
 \subsection{¿Cuándo se utiliza?}
     \begin{frame}{¿Cuándo se utiliza?}
 El problema en la práctica se presenta cuando nos vemos imposibilitados a encontrar la
-función primitiva requerida, aún para integrales aparentemente sencillas como\\
-{\small \[I=\int_{0}^{1}e^{x^{2}}\]}
-la cual simplemente es imposible de resolver con el Teorema Fundamental del Cálculo y resolveremos más adelante.
+función primitiva requerida, aún para integrales aparentemente sencillas\\
+\alert{{\huge \[I=\int_{0}^{1}e^{x^{2}}\]}}
 \\$\,$\\
 El algoritmo de Romberg forma parte de una técnica conocida como método de extrapolación de Richardson.
 \end{frame}
@@ -90,10 +89,11 @@ Para realizar el método de Romberg se usa la fórmula del trapecio.
 \section{Desarrollo}
   \subsection{¿Qué se hace?}
         \begin{frame}{¿Qué se hace?}
-Consiste en ir haciendo segmentos y entre más pequeños sean nuestros segmentos, más iremos aproximando al área de una función.
+Consiste en ir haciendo segmentos y entre más pequeños sean nuestros segmentos, más iremos aproximando al área de una función. Las aproximaciones mejoran su precisión conforme aumenta el número de subintervalos.
   \begin{alertblock}{\centering \bf Lo que se va obteniendo de cada aproximación con Romberg} 
 	\begin{center}
-		\includegraphics[height=4cm]{fig1.png}\footnote{Burden}\\
+		\includegraphics[height=5cm]{fig1.png}
+%%\footnote{Burden}\\
     \end{center}
 \end{alertblock}
 \end{frame}
@@ -101,10 +101,33 @@ Consiste en ir haciendo segmentos y entre más pequeños sean nuestros segmentos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \begin{frame}{¿Qué se hace?}
   \begin{center} 
-    {\LARGE Finalizado el ejercicio se hará un ejemplo más gráfico usando Geogebra}\\
+    {\LARGE Finalizado el ejercicio se mostrará el ejemplo usando Geogebra}\\
   \end{center}
 
 \end{frame}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Esquema de integración}
+\begin{frame}{Esquema de integración de Romberg}
+El método se va haciendo por niveles y para sacar el primer nivel necesitamos aplicar directamente la fórmula del trapecio.\n
+	\begin{center}
+		\includegraphics[height=4cm]{tabla.png}
+    \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Obtener niveles requeridos}
+\begin{alertblock} 
+    {\centering\bf Coeficientes del nivel requerido}
+Para un nivel \textit{\textbf{2, 3, ..., n}} ya se tienen ciertas fórmulas. Los coeficientes irán variando dependiendo del nivel y la fórmula para calcular los coeficientes es: \\
+\begin{center}
+\huge{$\frac{4^{k-1}}{4^{k-1}-1}l_{m}-\frac{1}{4^{k-1}-1}l_{i}$}
+\\$\,$\\
+{\small $l_{m}=integral\, más\, exacta$}\\
+{\small $l_{i}=integral\, menos\, exacta$}
+\par\end{center}
+\end{alertblock}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -115,36 +138,14 @@ Consiste en ir haciendo segmentos y entre más pequeños sean nuestros segmentos
 Se nos da la siguiente función para resolver por el método de Romberg.
 \begin{center}
 \alert{{\huge \[\int_{0}^{1}e^{x^{2}}dx\]}}\\
-\alert{{\LARGE $n=1,2,4$}}\\
+\alert{{\LARGE $n=1,2,4,8,16$}}\\
 \par\end{center}
 \end{exampleblock} 
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ejemplo}
-El método se va haciendo por niveles y para sacar el primer nivel necesitamos aplicar directamente la fórmula del trapecio.\n
-	\begin{center}
-		\includegraphics[height=4cm]{tabla.png}
-    \end{center}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ejemplo}
-\begin{alertblock} 
-    {\centering\bf Coeficientes del nivel requerido}
-Para un nivel \textit{\textbf{2, 3, ..., n}} ya se tienen ciertas fórmulas. Los coeficientes irán variando dependiendo del nivel y la fórmula para calcular los coeficientes es: \\
-\begin{center}
-\huge{$\frac{4^{k-1}}{4^{k-1}-1}l_{m}-\frac{1}{4^{k-1}-1}l_{l}$}
-\\$\,$\\
-{\small $l_{m}=integral\, más\, exacta$}\\
-{\small $l_{l}=integral\, menos\, exacta$}
-\par\end{center}
-\end{alertblock}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Calculando Nivel 1 $l_{1}$}
+\begin{frame}{Calculando $l_{1}$ con n=1 }
 Para \alert{n=1} se calcula con la fórmula del trapecio de un segmento 
 \begin{center}
 \alert{{\small A\approx\frac{h}{2}\left[f(b)+f(a)\right]]}}
@@ -160,7 +161,7 @@ Teniendo lo valores
 \\$\,$\\ 
 ... sustituyendo
 \\$\,$\\
-\alert{$A\approx\frac{1}{2}\left[1+2.718282\right]$}
+\alert{$A\approx\frac{1}{2}\left[1+2.71828\right]$}
 
 \column{0.5\textwidth}
 \begin{tabular}{|c|c|}
@@ -170,13 +171,13 @@ $x$ & $f(x)$\tabularnewline
 \hline 
 $0$ & $1$\tabularnewline
 \hline 
-$1$ & $2.718282$\tabularnewline
+$1$ & $2.71828$\tabularnewline
 \hline 
 \end{tabular}
 \\$\,$\\
 \begin{LARGE}
 \begin{center}
-\color{green} $l_{1}=1.859141$
+\color{green} $l_{1}=1.85914$
 \par\end{center}
 \end{LARGE}
 \end{columns} 
@@ -186,7 +187,7 @@ $1$ & $2.718282$\tabularnewline
 \end{frame}
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Calculando Nivel 2 $l_{2}$}
+\begin{frame}{Calculando $l_{2}$ con n=2 }
 Ahora \alert{n=2} se calcula de nuevo con la fórmula del trapecio 
 \begin{center}
 \alert{\large $A\approx\frac{h}{2}\left[f(b)+f(a)+2\left[\sum_{i=1}^{n-1}f(x_{i})\right]\right]$}
@@ -204,7 +205,7 @@ Teniendo lo valores
 \\$\,$\\ 
 ... sustituyendo
 \\$\,$\\
-\alert{$A\approx\frac{1}{4}\left[1+2.718282+2e^{(\frac{1}{2})^{2}}\right]$}
+\alert{$A\approx\frac{1}{4}\left[1+2.71828+2e^{(\frac{1}{2})^{2}}\right]$}
 
 \column{0.5\textwidth}
 \begin{tabular}{|c|c|}
@@ -214,14 +215,14 @@ $x$ & $f(x)$\tabularnewline
 \hline 
 $0$ & $1$\tabularnewline
 \hline 
-$0.5$ & $1.284025$\tabularnewline
+$0.5$ & $1.28403$\tabularnewline
 \hline
-$1$ & $2.718282$\tabularnewline
+$1$ & $2.71828$\tabularnewline
 \hline 
 \end{tabular}
 \begin{LARGE}
 \begin{center}
-\color{green} $l_{2}=1.57583$
+\color{green} $l_{2}=1.57158$
 \par\end{center}
 \end{LARGE}
 \end{columns} 
@@ -231,7 +232,7 @@ $1$ & $2.718282$\tabularnewline
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Calculando Nivel 3 $l_{3}$}
+\begin{frame}{Calculando $l_{3}$ con n=4 }
 Ahora con \alert{n=4}
 \\$\,$\\
 \begin{columns}
@@ -245,13 +246,13 @@ $x$ & $f(x)$\tabularnewline
 \hline 
 $0$ & $1$\tabularnewline
 \hline 
-$\frac{1}{4}$ & $1.064494$\tabularnewline
+$\frac{1}{4}$ & $1.06449$\tabularnewline
 \hline 
-$\frac{1}{2}$ & $1.284025$\tabularnewline
+$\frac{1}{2}$ & $1.28403$\tabularnewline
 \hline 
-$\frac{3}{4}$ & $1.755055$\tabularnewline
+$\frac{3}{4}$ & $1.75505$\tabularnewline
 \hline 
-$1$ & $2.718282$\tabularnewline
+$1$ & $2.71828$\tabularnewline
 \hline 
 \end{tabular}
 \begin{LARGE}
@@ -261,16 +262,16 @@ $1$ & $2.718282$\tabularnewline
 
 \column{0.5\textwidth}
 Haciendo la suma
-$\sum=1.064494+1.284025+1.755055$
+$\sum=1.06449+1.28403+1.75505$
 $=4.103574$
 
 \\$\,$\\
 ... sustituyendo
 \\$\,$\\
-\alert{$A\approx\frac{1}{8}\left[1+2.718282+2({4.103574})$)\right}
+\alert{$A\approx\frac{1}{8}\left[1+2.71828+2({4.10357})$)\right}
 \begin{LARGE}
 \begin{center}
-\color{green} $l_{3}=1.490679$
+\color{green} $l_{3}=1.49068$
 \par\end{center}
 \end{LARGE}
 \end{columns} 
@@ -279,29 +280,140 @@ $=4.103574$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Sustituyendo resultados en la tabla}
-Una vez que tenemos nuestros valores de $l_{1}, l_{2}, l_{3}$, los sustituimos en la tabla del método de Romberg, como nos indica.\\
-
+\begin{frame}{Calculando $l_{4}$ con n=8 }
+Ahora con \alert{n=8}
 \\$\,$\\
-De la integral más exacta a la menos exacta
-	\begin{center}
-		\includegraphics[height=3.5cm]{sustitucion.png}
-    \end{center}
-\begin{alertblock}{Los valores del nivel 1 son los valores de $l_{1}, l_{2}, l_{3}$ usando las $n$ que son los números de trapecios usados para aproximar.}
-\end{alertblock}
+\begin{columns}
+\column{0.5\textwidth}
+Tabulando los valores tenemos:
+\\$\,$\\
+\begin{tabular}{|c|c|}
+\hline 
+$x$ & $f(x)$\tabularnewline
+\hline 
+\hline 
+$0$ & $1$\tabularnewline
+\hline 
+$\frac{1}{8}$ & $1.01575$\tabularnewline
+\hline 
+$\frac{1}{4}$ & $1.06449$\tabularnewline
+\hline 
+$\frac{3}{8}$ & $1.15099$\tabularnewline
+\hline 
+$\frac{1}{2}$ & $1.28403$\tabularnewline
+\hline
+$\frac{5}{8}$ & $1.47790$\tabularnewline
+\hline
+$\frac{3}{8}$ & $1.75505$\tabularnewline
+\hline
+$\frac{7}{8}$ & $2.15034$\tabularnewline
+\hline
+$1$ & $2.71828$\tabularnewline
+\hline 
+\end{tabular}
+\begin{LARGE}
+\begin{center}
+\par\end{center}
+\end{LARGE}
+
+\column{0.5\textwidth}
+Haciendo la suma
+$\sum=9.89855$
+\\$\,$\\
+... sustituyendo
+\\$\,$\\
+\alert{$A\approx\frac{1}{16}\left[1+2.71828+2({9.89855})$)\right}
+\begin{LARGE}
+\begin{center}
+\color{green} $l_{4}=1.46971$
+\par\end{center}
+\end{LARGE}
+\end{columns} 
 \end{frame}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Evaluando todos los valores}
-Evaluamos el último punto siguiendo los pasos anteriores de la integral más y menos exacta para llegar a \alert{1.4609} \\
+\begin{frame}{Calculando $l_{5}$ con n=16 }
+Ahora con \alert{n=16} Tabulando los valores tenemos:
 \\$\,$\\
-	\begin{center}
-		\includegraphics[height=3.5cm]{sustitucion2.png}
-    \end{center}
-\begin{alertblock}{En ese punto, con 3 segmentos nos aproximamos al \alert{área total} de la función en el intervalo de $0$ a $1$.}
+\begin{columns}
+\column{0.5\textwidth}
+\\$\,$\\
+\begin{tabular}{|c|c|}
+\hline 
+$x$ & $f(x)$\tabularnewline
+\hline 
+$0$ & $1$\tabularnewline
+\hline 
+$\frac{1}{16}$ & $1.00391$\tabularnewline
+\hline 
+$\frac{1}{8}$ & $1.01575$\tabularnewline
+\hline 
+$\frac{3}{16}$ & $1.03578$\tabularnewline
+\hline 
+$\frac{1}{4}$ & $1.06449$\tabularnewline
+\hline
+$\frac{5}{16}$ & $1.10258$\tabularnewline
+\hline
+$\frac{3}{8}$ & $1.15099$\tabularnewline
+\hline
+$\frac{7}{16}$ & $1.21095$\tabularnewline
+\hline
+$\frac{1}{2}$ & $1.28403$\tabularnewline
+\hline
+$\frac{9}{16}$ & $1.37219$\tabularnewline
+\hline
+$\frac{5}{8}$ & $1.47790$\tabularnewline
+\hline
+\end{tabular}
+\begin{LARGE}
+\begin{center}
+\par\end{center}
+\end{LARGE}
+
+\column{0.5\textwidth}
+\begin{tabular}{|c|c|}
+\hline
+$\frac{11}{16}$ & $1.60425$\tabularnewline
+\hline
+$\frac{3}{4}$ & $1.75505$\tabularnewline
+\hline
+$\frac{13}{16}$ & $1.93509$\tabularnewline
+\hline
+$\frac{7}{8}$ & $2.15034$\tabularnewline
+\hline
+$\frac{15}{16}$ & $2.40826$\tabularnewline
+\hline
+$1$ & $2.71828$\tabularnewline
+\hline 
+\end{tabular}
+\\$\,$\\
+Haciendo la suma
+$\sum=21.57158$
+\\$\,$\\
+... sustituyendo
+\\$\,$\\
+\alert{$A\approx\frac{1}{32}\left[1+2.71828+2({21.57158})$)\right}
+\begin{LARGE}
+\begin{center}
+\color{green} $l_{5}=1.46442$
+\par\end{center}
+\end{LARGE}
+\end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Tabla final de 5 niveles y valor aproximado}
+Evaluando todos nuestros valores de $l_{n}$ y sustiyéndolos en la tabla del método de Romberg, llegamos a que con 5 segmentos, nos aproximamos al área total de la función en el intervalo de 0 a 1, de la integral más exacta a la menos exacta.
+\begin{alertblock}
+{\centering\bf Coeficientes del nivel requerido}
+{\begin{center}
+		\includegraphics[height=5cm]{tabla1.png}
+    \end{center}}
 \end{alertblock}
+\end{frame}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -318,21 +430,19 @@ Metiendo la función en Wolfram da el siguiente valor...\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Graficando}
 \begin{frame}{Trapecios con Geogebra\includegraphics[height=1cm]{geoico.png}}
-Usando Geogebra, se puede observar cómo es que los trapecios se van acomodando en la función conforme el valor de n se va moviendo. 
+\begin{center}
+Usando Geogebra, se observará la forma en que los trapecios se van acomodando en la función conforme el valor de n se va moviendo.
+\end{center}
 \\$\,$\\
-	\begin{center}
-		\includegraphics[height=5cm]{geo.png}
-    \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Referencias}
 \appendix
 \section<presentation>*{\appendixname}
-\subsection<presentation>*{Fuentes}
 
 \begin{frame}
-  \frametitle<presentation>{Fuentes}
+  \frametitle<presentation>{Bibliografía}
     
   \begin{thebibliography}{10}
     
@@ -346,6 +456,10 @@ Usando Geogebra, se puede observar cómo es que los trapecios se van acomodando 
   \bibitem{}
    Richard L. Burden
     \newblock {\em Análisis Numérico, Séptima Edición}.
+    
+      \bibitem{}
+   John H. Mathews - Kurtis D. Fink
+    \newblock {\em Métodos Numéricos con MatLab}.
     
 \setbeamertemplate{bibliography item}[online]
 \bibitem{A} Aproximación de áreas por el método del trapecio\\
